@@ -1,15 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Crown, Gamepad2, Users, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { createClient } from "@/lib/supabase/client";
 
 export default function QuizPage() {
   const [roomCode, setRoomCode] = useState("");
   const [playerName, setPlayerName] = useState("");
+  const [user, setUser] = useState<any>(null);
   const router = useRouter();
+  const supabase = createClient();
+
+  useEffect(() => {
+    const getUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+    };
+    getUser();
+  }, [supabase]);
 
   const handleJoin = (event: React.FormEvent) => {
     event.preventDefault();
@@ -17,6 +28,16 @@ export default function QuizPage() {
     const name = playerName.trim();
     if (!code || !name) return;
     router.push(`/quiz-game?room=${encodeURIComponent(code)}&name=${encodeURIComponent(name)}`);
+  };
+
+  const handleHostAction = () => {
+    if (user) {
+      // In a real app, this would likely create a room in the DB
+      // For now, we'll redirect to a host dashboard or create room flow
+      router.push("/quiz/host");
+    } else {
+      router.push("/login");
+    }
   };
 
   return (
@@ -98,12 +119,15 @@ export default function QuizPage() {
 
               <Button
                 type="button"
-                variant="outline"
-                onClick={() => router.push("/login")}
-                className="w-full h-14 text-lg font-bold border-violet-200 text-violet-700 hover:bg-violet-50 dark:border-violet-500/30 dark:text-violet-400 dark:hover:bg-violet-500/10 transition-transform active:scale-95 shadow-sm"
+                variant={user ? "default" : "outline"}
+                onClick={handleHostAction}
+                className={`w-full h-14 text-lg font-bold transition-transform active:scale-95 shadow-sm ${user
+                    ? "bg-violet-600 hover:bg-violet-700 text-white shadow-violet-500/25"
+                    : "border-violet-200 text-violet-700 hover:bg-violet-50 dark:border-violet-500/30 dark:text-violet-400 dark:hover:bg-violet-500/10"
+                  }`}
               >
                 <Crown className="mr-2 h-5 w-5" />
-                Start Hosting
+                {user ? "Create Room" : "Sign In to Host"}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
