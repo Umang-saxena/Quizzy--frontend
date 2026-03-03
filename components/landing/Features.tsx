@@ -33,7 +33,7 @@ const features = [
 
 const Features = () => (
     <section className="relative py-20 md:py-24">
-        <div className="container px-4">
+        <div className="container mx-auto px-4">
             <div className="mb-16 text-center">
                 <h2 className="mb-4 text-3xl font-bold text-zinc-100 md:text-5xl">
                     Why <span className="bg-linear-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Quizzy</span>?

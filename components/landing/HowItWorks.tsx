@@ -24,7 +24,7 @@ const steps = [
 const HowItWorks = () => (
     <section className="relative py-20 md:py-24">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(79,70,229,0.08)_0%,transparent_70%)]" />
-        <div className="container relative z-10 px-4">
+        <div className="container relative z-10 mx-auto px-4">
             <div className="mb-16 text-center">
                 <h2 className="mb-4 text-3xl font-bold text-zinc-100 md:text-5xl">
                     How It <span className="bg-linear-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Works</span>

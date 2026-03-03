@@ -4,7 +4,7 @@ import { Zap } from "lucide-react";
 const CTA = () => {
   return (
     <section className="py-20 md:py-24">
-      <div className="container px-4">
+      <div className="container mx-auto px-4">
         <div className="relative mx-auto max-w-3xl overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/80 p-12 text-center">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(79,70,229,0.12)_0%,transparent_60%)]" />
           <div className="relative z-10">
