@@ -76,11 +76,11 @@ function QuizGamePageContent() {
 
   if (gameOver) {
     return (
-      <section className="flex min-h-screen items-center justify-center bg-linear-to-b from-indigo-50 via-white to-violet-50 px-4 pt-24 pb-12">
-        <div className="w-full max-w-md rounded-2xl border border-zinc-200 bg-white p-10 text-center shadow-sm">
+      <section className="flex min-h-screen items-center justify-center bg-linear-to-b from-zinc-950 via-zinc-900 to-zinc-950 px-4 pt-24 pb-12">
+        <div className="w-full max-w-md rounded-2xl border border-zinc-800 bg-zinc-900/80 p-10 text-center shadow-sm">
           <Trophy className="mx-auto mb-4 h-16 w-16 text-violet-600" />
-          <h1 className="mb-2 text-3xl font-bold text-zinc-900">Game Over</h1>
-          <p className="mb-6 text-zinc-600">Great job, {playerName}.</p>
+          <h1 className="mb-2 text-3xl font-bold text-zinc-100">Game Over</h1>
+          <p className="mb-6 text-zinc-300">Great job, {playerName}.</p>
           <div className="mb-2 text-5xl font-bold text-indigo-600">{score}</div>
           <p className="mb-8 text-sm text-zinc-500">points scored</p>
           <Link
@@ -95,12 +95,12 @@ function QuizGamePageContent() {
   }
 
   return (
-    <section className="min-h-screen bg-linear-to-b from-indigo-50 via-white to-violet-50 pt-16">
-      <div className="border-b border-zinc-200/80 bg-white/80 px-4 py-3 backdrop-blur">
+    <section className="min-h-screen bg-linear-to-b from-zinc-950 via-zinc-900 to-zinc-950 pt-16">
+      <div className="border-b border-zinc-800/80 bg-zinc-950/80 px-4 py-3 backdrop-blur">
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="rounded bg-zinc-100 px-2 py-1 font-mono text-xs text-zinc-600">{roomCode}</span>
-            <span className="text-sm font-medium text-zinc-800">{playerName}</span>
+            <span className="rounded bg-zinc-800 px-2 py-1 font-mono text-xs text-zinc-300">{roomCode}</span>
+            <span className="text-sm font-medium text-zinc-200">{playerName}</span>
           </div>
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1 text-sm font-bold text-indigo-700">
@@ -117,23 +117,23 @@ function QuizGamePageContent() {
       <div className="container mx-auto flex max-w-2xl flex-1 flex-col items-center justify-center px-4 py-8">
         <div className="mb-8 w-full">
           <div className="mb-2 flex items-center justify-between">
-            <span className="flex items-center gap-1 text-sm text-zinc-600">
+            <span className="flex items-center gap-1 text-sm text-zinc-400">
               <Clock className="h-4 w-4" />
               Time
             </span>
             <span className={`text-lg font-bold ${timeLeft <= 5 ? "text-red-600" : "text-indigo-700"}`}>{timeLeft}s</span>
           </div>
-          <div className="h-2 overflow-hidden rounded-full bg-zinc-200">
+          <div className="h-2 overflow-hidden rounded-full bg-zinc-700">
             <div className="h-full bg-indigo-600 transition-all" style={{ width: `${progress}%` }} />
           </div>
         </div>
 
         <div className="w-full">
-          <h2 className="mb-8 text-center text-2xl font-bold text-zinc-900 md:text-3xl">{question.question}</h2>
+          <h2 className="mb-8 text-center text-2xl font-bold text-zinc-100 md:text-3xl">{question.question}</h2>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {question.options.map((option, index) => {
-              let stateClass = "border-zinc-200 bg-white hover:border-indigo-300";
+              let stateClass = "border-zinc-700 bg-zinc-900 hover:border-indigo-500";
 
               if (isRevealed) {
                 if (index === question.correct) {
@@ -141,7 +141,7 @@ function QuizGamePageContent() {
                 } else if (index === selectedOption && index !== question.correct) {
                   stateClass = "border-red-300 bg-red-50";
                 } else {
-                  stateClass = "border-zinc-200 bg-white opacity-60";
+                  stateClass = "border-zinc-700 bg-zinc-900 opacity-60";
                 }
               }
 
@@ -150,7 +150,7 @@ function QuizGamePageContent() {
                   key={option}
                   onClick={() => handleSelect(index)}
                   disabled={isRevealed}
-                  className={`rounded-xl border p-5 text-left font-medium text-zinc-800 transition ${stateClass}`}
+                  className={`rounded-xl border p-5 text-left font-medium text-zinc-200 transition ${stateClass}`}
                 >
                   <span className="mr-2 text-xs font-bold opacity-60">{optionLabels[index]}</span>
                   {option}
@@ -181,7 +181,7 @@ function QuizGamePageContent() {
 
 export default function QuizGamePage() {
   return (
-    <Suspense fallback={<section className="min-h-screen bg-linear-to-b from-indigo-50 via-white to-violet-50 pt-24" />}>
+    <Suspense fallback={<section className="min-h-screen bg-linear-to-b from-zinc-950 via-zinc-900 to-zinc-950 pt-24" />}>
       <QuizGamePageContent />
     </Suspense>
   );

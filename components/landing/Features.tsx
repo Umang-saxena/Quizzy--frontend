@@ -35,10 +35,10 @@ const Features = () => (
     <section className="relative py-20 md:py-24">
         <div className="container px-4">
             <div className="mb-16 text-center">
-                <h2 className="mb-4 text-3xl font-bold text-zinc-900 md:text-5xl">
-                    Why <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Quizzy</span>?
+                <h2 className="mb-4 text-3xl font-bold text-zinc-100 md:text-5xl">
+                    Why <span className="bg-linear-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Quizzy</span>?
                 </h2>
-                <p className="mx-auto max-w-xl text-lg text-zinc-600">
+                <p className="mx-auto max-w-xl text-lg text-zinc-300">
                     Everything you need for the ultimate quiz experience.
                 </p>
             </div>
@@ -47,13 +47,13 @@ const Features = () => (
                 {features.map((feature) => (
                     <div
                         key={feature.title}
-                        className="rounded-xl border border-zinc-200 bg-white p-6 transition-colors hover:border-indigo-300"
+                        className="rounded-xl border border-zinc-800 bg-zinc-900/80 p-6 transition-colors hover:border-indigo-500/60"
                     >
                         <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-lg ${feature.bg}`}>
                             <feature.icon className={`h-6 w-6 ${feature.color}`} />
                         </div>
-                        <h3 className="mb-2 text-lg font-semibold text-zinc-900">{feature.title}</h3>
-                        <p className="text-sm leading-relaxed text-zinc-600">{feature.description}</p>
+                        <h3 className="mb-2 text-lg font-semibold text-zinc-100">{feature.title}</h3>
+                        <p className="text-sm leading-relaxed text-zinc-400">{feature.description}</p>
                     </div>
                 ))}
             </div>
