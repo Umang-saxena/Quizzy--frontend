@@ -6,39 +6,39 @@ const features = [
         title: "Real-time Gameplay",
         description: "Answer questions in real-time with live feedback and instant scoring.",
         color: "text-indigo-600",
-        bg: "bg-indigo-100",
+        bg: "bg-indigo-50 dark:bg-indigo-500/10",
     },
     {
         icon: Users,
         title: "Multiplayer Rooms",
         description: "Create or join rooms with friends. No sign-up needed to play!",
         color: "text-emerald-600",
-        bg: "bg-emerald-100",
+        bg: "bg-emerald-50 dark:bg-emerald-500/10",
     },
     {
         icon: Timer,
         title: "Timed Challenges",
         description: "Race against the clock. Faster answers mean higher scores.",
         color: "text-sky-600",
-        bg: "bg-sky-100",
+        bg: "bg-sky-50 dark:bg-sky-500/10",
     },
     {
         icon: Trophy,
         title: "Live Leaderboard",
         description: "Track rankings in real-time and compete for the top spot.",
         color: "text-violet-600",
-        bg: "bg-violet-100",
+        bg: "bg-violet-50 dark:bg-violet-500/10",
     },
 ];
 
 const Features = () => (
-    <section className="relative py-20 md:py-24">
+    <section className="relative py-20 md:py-24 bg-zinc-50 dark:bg-zinc-950/50">
         <div className="container mx-auto px-4">
             <div className="mb-16 text-center">
-                <h2 className="mb-4 text-3xl font-bold text-zinc-100 md:text-5xl">
-                    Why <span className="bg-linear-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Quizzy</span>?
+                <h2 className="mb-4 text-3xl font-bold text-zinc-900 md:text-5xl dark:text-zinc-100">
+                    Why <span className="bg-linear-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent italic">Quizzy</span>?
                 </h2>
-                <p className="mx-auto max-w-xl text-lg text-zinc-300">
+                <p className="mx-auto max-w-xl text-lg text-zinc-600 dark:text-zinc-300">
                     Everything you need for the ultimate quiz experience.
                 </p>
             </div>
@@ -47,13 +47,13 @@ const Features = () => (
                 {features.map((feature) => (
                     <div
                         key={feature.title}
-                        className="rounded-xl border border-zinc-800 bg-zinc-900/80 p-6 transition-colors hover:border-indigo-500/60"
+                        className="rounded-3xl border border-zinc-200 bg-white p-8 transition-all hover:border-indigo-500/50 hover:shadow-2xl hover:shadow-indigo-500/10 dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:border-indigo-500/60"
                     >
-                        <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-lg ${feature.bg}`}>
-                            <feature.icon className={`h-6 w-6 ${feature.color}`} />
+                        <div className={`mb-6 flex h-14 w-14 items-center justify-center rounded-xl ${feature.bg}`}>
+                            <feature.icon className={`h-7 w-7 ${feature.color}`} />
                         </div>
-                        <h3 className="mb-2 text-lg font-semibold text-zinc-100">{feature.title}</h3>
-                        <p className="text-sm leading-relaxed text-zinc-400">{feature.description}</p>
+                        <h3 className="mb-3 text-xl font-bold text-zinc-900 dark:text-zinc-100">{feature.title}</h3>
+                        <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400">{feature.description}</p>
                     </div>
                 ))}
             </div>
