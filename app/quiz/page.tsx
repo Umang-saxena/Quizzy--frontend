@@ -15,12 +15,19 @@ export default function QuizPage() {
   const supabase = createClient();
 
   useEffect(() => {
-    const getUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
+    // Check current session
+    supabase.auth.getUser().then(({ data: { user } }) => {
       setUser(user);
-    };
-    getUser();
-  }, [supabase]);
+    });
+
+    // Listen to changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user ?? null);
+      if (event === 'SIGNED_IN') router.refresh();
+    });
+
+    return () => subscription.unsubscribe();
+  }, [supabase, router]);
 
   const handleJoin = (event: React.FormEvent) => {
     event.preventDefault();
@@ -122,8 +129,8 @@ export default function QuizPage() {
                 variant={user ? "default" : "outline"}
                 onClick={handleHostAction}
                 className={`w-full h-14 text-lg font-bold transition-transform active:scale-95 shadow-sm ${user
-                    ? "bg-violet-600 hover:bg-violet-700 text-white shadow-violet-500/25"
-                    : "border-violet-200 text-violet-700 hover:bg-violet-50 dark:border-violet-500/30 dark:text-violet-400 dark:hover:bg-violet-500/10"
+                  ? "bg-violet-600 hover:bg-violet-700 text-white shadow-violet-500/25"
+                  : "border-violet-200 text-violet-700 hover:bg-violet-50 dark:border-violet-500/30 dark:text-violet-400 dark:hover:bg-violet-500/10"
                   }`}
               >
                 <Crown className="mr-2 h-5 w-5" />

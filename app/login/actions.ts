@@ -20,7 +20,7 @@ export async function login(formData: FormData) {
     }
 
     revalidatePath('/', 'layout')
-    redirect('/auth/success')
+    redirect('/quiz')
 }
 
 export async function signup(formData: FormData) {
@@ -40,7 +40,7 @@ export async function signup(formData: FormData) {
 
     revalidatePath('/', 'layout')
     // If successful signup, we can also show the success page or a confirmation message
-    redirect('/auth/success?type=signup')
+    redirect('/quiz')
 }
 
 export async function signout() {
